@@ -45,10 +45,13 @@
             this.btnSair = new System.Windows.Forms.Button();
             this.Serial = new System.IO.Ports.SerialPort(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtTransmite = new System.Windows.Forms.TextBox();
             this.btnEnviar = new System.Windows.Forms.Button();
+            this.txtTransmite = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtRecebe = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -208,6 +211,10 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // Serial
+            // 
+            this.Serial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.Serial_DataReceived);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnEnviar);
@@ -219,14 +226,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Transmissão";
             // 
-            // txtTransmite
-            // 
-            this.txtTransmite.Location = new System.Drawing.Point(32, 32);
-            this.txtTransmite.Name = "txtTransmite";
-            this.txtTransmite.Size = new System.Drawing.Size(481, 20);
-            this.txtTransmite.TabIndex = 0;
-            this.txtTransmite.TextChanged += new System.EventHandler(this.txtTransmite_TextChanged);
-            // 
             // btnEnviar
             // 
             this.btnEnviar.Location = new System.Drawing.Point(438, 58);
@@ -237,11 +236,39 @@
             this.btnEnviar.UseVisualStyleBackColor = true;
             this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
             // 
+            // txtTransmite
+            // 
+            this.txtTransmite.Location = new System.Drawing.Point(32, 32);
+            this.txtTransmite.Name = "txtTransmite";
+            this.txtTransmite.Size = new System.Drawing.Size(481, 20);
+            this.txtTransmite.TabIndex = 0;
+            this.txtTransmite.TextChanged += new System.EventHandler(this.txtTransmite_TextChanged);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtRecebe);
+            this.groupBox3.Location = new System.Drawing.Point(27, 274);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(534, 153);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Recepção";
+            // 
+            // txtRecebe
+            // 
+            this.txtRecebe.Location = new System.Drawing.Point(17, 19);
+            this.txtRecebe.Multiline = true;
+            this.txtRecebe.Name = "txtRecebe";
+            this.txtRecebe.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtRecebe.Size = new System.Drawing.Size(481, 128);
+            this.txtRecebe.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 275);
+            this.ClientSize = new System.Drawing.Size(677, 439);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnAbrir);
@@ -254,6 +281,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -278,6 +307,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.TextBox txtTransmite;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtRecebe;
     }
 }
 

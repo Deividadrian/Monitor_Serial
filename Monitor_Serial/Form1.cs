@@ -13,6 +13,9 @@ namespace Monitor_Serial
 {
     public partial class Form1 : Form
     {
+
+        string RxString;
+
         public Form1()
         {
             InitializeComponent();
@@ -170,13 +173,27 @@ namespace Monitor_Serial
         {
             if(Serial.IsOpen)
             {
-                Serial.Write(txtTransmite.Text);
+                Serial.Write(txtTransmite.Text + "\r\n");
+                txtTransmite.Clear();
             }
         }
 
         private void txtTransmite_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Serial_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            RxString = Serial.ReadExisting();
+
+            //Chama outra thread para escrever o dado em alguma posição do formulário
+            this.Invoke(new EventHandler(trataDadoRecebido));
+        }
+
+        private void trataDadoRecebido(object sender, EventArgs e)
+        {
+            txtRecebe.Text += RxString;
         }
     }
 }
