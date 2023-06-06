@@ -166,7 +166,8 @@ namespace Monitor_Serial
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-
+            Serial.Close();
+            Close();
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
